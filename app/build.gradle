@@ -6,9 +6,10 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
+
     defaultConfig {
         applicationId "com.raywenderlich.listmaker"
         minSdkVersion 22

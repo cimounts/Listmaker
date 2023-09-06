@@ -15,10 +15,16 @@ class MainFragment : Fragment() {
     }
 
     private lateinit var viewModel: MainViewModel
-
+    private lateinit var binding: MainFragmentBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+
+        binding = MainFragmentBinding.inflate(inflater, container, false)
+        binding.listsRecyclerview.layoutManager = LinearLayoutManager (requireContext())
+
+        binding.listsRecyclerview.adapter = ListsSelectionRecyclerViewAdapter()
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
