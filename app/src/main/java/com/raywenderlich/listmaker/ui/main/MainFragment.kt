@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.listmaker.R
 
 class MainFragment : Fragment() {
@@ -22,7 +23,7 @@ class MainFragment : Fragment() {
         binding = MainFragmentBinding.inflate(inflater, container, false)
         binding.listsRecyclerview.layoutManager = LinearLayoutManager (requireContext())
 
-        binding.listsRecyclerview.adapter = ListsSelectionRecyclerViewAdapter()
+        binding.listsRecyclerview.adapter = ListSelectionRecyclerViewAdapter()
 
         return binding.root
     }
