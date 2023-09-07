@@ -14,12 +14,15 @@ import com.raywenderlich.listmaker.databinding.MainFragmentBinding
 import com.raywenderlich.listmaker.models.TaskList
 import kotlin.properties.Delegates
 
-class MainFragment : Fragment() {
-
+class MainFragment(val clickListener: MainFragmentInteractionListener) : Fragment(),
+ListSelectionRecyclerViewAdapter.ListSelectionRecyclerViewClickListener {
+    interface MainFragmentInteractionListener {
+        fun listItemTapped(list: TaskList)
+    }
     private lateinit var binding: MainFragmentBinding
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance(clickListener: MainFragmentInteractionListener) = MainFragment(clickListener)
     }
 
     private lateinit var viewModel: MainViewModel
@@ -38,12 +41,15 @@ class MainFragment : Fragment() {
             MainViewModelFactory(PreferenceManager.getDefaultSharedPreferences(requireActivity())))
             .get(MainViewModel::class.java)
 
-        val recyclerViewAdapter = ListSelectionRecyclerViewAdapter(viewModel.lists)
+        val recyclerViewAdapter = ListSelectionRecyclerViewAdapter(viewModel.lists, this)
 
         binding.listsRecyclerview.adapter = recyclerViewAdapter
 
         viewModel.onListAdded = {
             recyclerViewAdapter.listUpdated()
         }
+    }
+    override fun listItemClicked(list: TaskList){
+        clickListener.listItemTapped(list)
     }
 }
