@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.raywenderlich.listmaker">
 
     <application
         android:allowBackup="true"
@@ -8,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Listmaker">
-        <activity
-            android:name=".ui.detail.ListDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".ui.detail.ListDetailActivity"
+            android:exported="false"></activity>
+
+        <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"
+                    android:exported="true"/>
+                <category android:name="android.intent.category.LAUNCHER"
+                    android:exported="true"/>
             </intent-filter>
         </activity>
     </application>
